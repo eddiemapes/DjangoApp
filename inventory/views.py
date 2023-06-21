@@ -1,13 +1,19 @@
 from django.shortcuts import render
-from django.views.generic.detail import ListView
+from django.http import HttpResponse
+from django.views.generic.list import ListView
 
 from inventory.models import *
 
 # Create your views here.
 
 def home(request):
+    # return HttpResponse("Hello world")
     return render(request, "inventory/home.html")
 
-class IngredientList(ListView):
-    model = Ingredient
-    template_name = inventory/ingredient_list.html
+def ingredients(request):
+    ingred_list = Ingredient.objects.all().order_by('ingredient_name')
+    return render(request, "inventory/ingredient_list.html", {'ingredients': ingred_list})
+
+# class IngredientList(ListView):
+#     model = Ingredient
+#     template_name = "inventory/ingredient_list.html"

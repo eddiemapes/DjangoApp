@@ -1,1 +1,22 @@
-{% extends {% extends './base.html' %} %}
+{% extends './base.html' %}
+{% block content %}
+<div class="ingredients">
+<table>
+    <th>Ingredient</th>
+    <th>Quantity</th>
+    {% for i in ingredients %}
+    
+        <tr>
+          <td>{{ i.ingredient_name }}</td>
+          <td>{{ i.ingredient_quantity }}</td>  
+        </tr>
+{% endfor %}
+</table>
+</div>
+
+
+
+
+
+
+{% endblock %}

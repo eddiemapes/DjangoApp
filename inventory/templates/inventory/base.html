@@ -1,6 +1,18 @@
+<html>
+{% block head %}
 <head>
-
+<title>{% block title %}Inventory{% endblock %}</title>
+<link rel="icon" type="image/x-icon" href='inventory/static/inventory/img/carrot.ico'/>
 </head>
+{% endblock %}
+
+
 <body>
     <a href="{% url 'home' %}">Django Delights Inventory</a>
+    <br>
+    <a href="{% url 'ingredients' %}">Ingredients</a>
+    <br>
+    {% block content %}
+    {% endblock %}
 </body>
+</html>

@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-ki07jbrw1@mdzt61*zopcq7*0gwy&1s&l1t46+44&rjx=p=i7m
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'localhost'
+    'localhost',
+    'Eddie',
 ]
 
 
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'djangodelights.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
