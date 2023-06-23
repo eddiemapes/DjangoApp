@@ -21,3 +21,4 @@ class RecipeRequirement(models.Model):
 class Purchase(models.Model):
     menu_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
     purchase_date = models.DateTimeField(auto_now_add=True, null=False, blank=False)
+    

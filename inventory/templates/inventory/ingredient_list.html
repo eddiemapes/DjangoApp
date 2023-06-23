@@ -1,22 +1,21 @@
 {% extends './base.html' %}
+{% block title %}Ingredients Inventory List{% endblock %}
+
 {% block content %}
-<div class="ingredients">
-<table>
-    <th>Ingredient</th>
-    <th>Quantity</th>
+
+
+<div class="ingredient-div">
+<table class="ingredient-table">
+    <th class="ingredient-th">Ingredient</th>
+    <th class="ingredient-th">Quantity</th>
     {% for i in ingredients %}
     
         <tr>
-          <td>{{ i.ingredient_name }}</td>
-          <td>{{ i.ingredient_quantity }}</td>  
+          <td class="ingredient-td">{{ i.ingredient_name }}</td>
+          <td class="ingredient-td">{{ i.ingredient_quantity }}</td>  
         </tr>
 {% endfor %}
 </table>
 </div>
-
-
-
-
-
 
 {% endblock %}

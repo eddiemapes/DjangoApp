@@ -1,18 +1,25 @@
+<!DOCTYPE html>
 <html>
+
 {% block head %}
 <head>
+{% load static %}
 <title>{% block title %}Inventory{% endblock %}</title>
 <link rel="icon" type="image/x-icon" href='inventory/static/inventory/img/carrot.ico'/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 {% endblock %}
-
-
 <body>
-    <a href="{% url 'home' %}">Django Delights Inventory</a>
-    <br>
-    <a href="{% url 'ingredients' %}">Ingredients</a>
-    <br>
-    {% block content %}
-    {% endblock %}
+
+    <table class="base-table">
+        <tr>
+            <th class="base-th"><a href="{% url 'home' %}">Home Page</a></th>
+            <th class="base-th"><a href="{% url 'ingredients' %}">Ingredients</a></th>
+            <th class="base-th">Menu Items</th>
+        </tr>
+</table>
+
+{% block content %}
+{% endblock %}
 </body>
 </html>
