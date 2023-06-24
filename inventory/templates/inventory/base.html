@@ -5,19 +5,23 @@
 <head>
 {% load static %}
 <title>{% block title %}Inventory{% endblock %}</title>
-<link rel="icon" type="image/x-icon" href='inventory/static/inventory/img/carrot.ico'/>
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 {% endblock %}
 <body>
+    <nav class="header">
+        <span class="logo">DJANGO DELIGHTS</span>
+        <ul>
+            <li><a href="{% url 'home' %}">HOME PAGE</a></li>
+            <li><a href="{% url 'ingredients' %}">INGREDIENTS</a></li>
+            <li>MENU</li>
+            
+        </ul>
 
-    <table class="base-table">
-        <tr>
-            <th class="base-th"><a href="{% url 'home' %}">Home Page</a></th>
-            <th class="base-th"><a href="{% url 'ingredients' %}">Ingredients</a></th>
-            <th class="base-th">Menu Items</th>
-        </tr>
-</table>
+
+
+    </nav>
+
 
 {% block content %}
 {% endblock %}

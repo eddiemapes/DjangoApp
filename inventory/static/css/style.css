@@ -1,31 +1,105 @@
-.base-table {
-    border-collapse: collapse;
-    border: 1px solid;
+
+ /* Header */
+.header {
     display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 4.44rem;
+    padding: 0 12%;
+    background-color: #507255;
+    box-shadow: 0 2px 6px 0 rgba(0,0,0,0.05);
+    font-family: Verdana;
+    font-size: 20;
+    font-weight: bold;
+}
+
+.header .logo {
+    flex-grow: 1;
+    color: #30d5c8;
+}
+
+.header li {
+    display: inline;
+    padding-right: 2.22rem;
+    padding-left: 2.22rem;
+}
+
+.header li a {
+    text-decoration: none;
+    color: #49393b;
+}
+
+/* Banner */
+.banner {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0;
-    height: 100px;
-    background-image: url('img/kitchenHeader.png');
+    height: 923px;
+    background: url("../css/img/modern.jpg") center center no-repeat;
     background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-}
-
-.base-th {
-    padding: 20px;
-    text-align: center;
-    border-right: 1px solid black;
     color: black;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: Helvetica;
 }
 
-.base-th:last-child {
-    border-right: none;
+.banner h2 {
+    padding: .55rem 0;
+    border-top: 4px solid black;
+    border-bottom: 4px solid black;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 100px;
 }
 
+.banner h1 {
+    padding-top: 1.5rem;
+    padding-bottom: 20rem;
+    font-size: 9rem;
+    font-weight: 900;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+
+/* Content section */
+.content {
+    padding: 0 25% rem 25%;
+    background-color: rgb(254, 231, 218);
+    color: #4a4a4a;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* Image with caption */
+.photo {
+    width: 75%;
+    padding: 1.11rem;
+    border-radius: 5px;
+    margin: 0 auto 4.44rem auto;
+    background-color: white;
+}
+
+.photo .image-container {
+    overflow: hidden;
+    margin-bottom: 1.11rem;
+}
+
+.photo .image-container img {
+    width: 100%;
+}
+
+.photo .caption {
+    font-style: italic;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.photo .first {
+    position: relative;
+    top: -2.77rem;
+    margin-bottom: 1.67rem;
+}
+
+/* Ingredient Table */
 .ingredient-div {
     display: flex;
     justify-content: center;
