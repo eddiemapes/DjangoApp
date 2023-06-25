@@ -1,8 +1,13 @@
 
+ * {
+    padding: 0;
+    margin: 0;
+ }
+ 
  /* Header */
-.header {
+nav {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     height: 4.44rem;
     padding: 0 12%;
@@ -13,20 +18,31 @@
     font-weight: bold;
 }
 
-.header .logo {
-    flex-grow: 1;
+.logo {
+    color: #30d5c8;
+    margin-right: 44rem;
+    border: 1px solid #30d5c8;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.logo a:active {
     color: #30d5c8;
 }
 
-.header li {
-    display: inline;
-    padding-right: 2.22rem;
-    padding-left: 2.22rem;
+.links {
+    display: flex;
+    /* padding-right: 2.22rem;
+    padding-left: 2.22rem; */
 }
 
-.header li a {
+.links a {
+    margin-left: 10px;
     text-decoration: none;
-    color: #49393b;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 /* Banner */
@@ -72,11 +88,11 @@
 
 /* Image with caption */
 .photo {
-    width: 75%;
+    width: 30%;
     padding: 1.11rem;
     border-radius: 5px;
     margin: 0 auto 4.44rem auto;
-    background-color: white;
+    background-color: #507255;
 }
 
 .photo .image-container {
@@ -86,11 +102,14 @@
 
 .photo .image-container img {
     width: 100%;
+    /* width: 600px;
+    height: 600px; */
 }
 
 .photo .caption {
     font-style: italic;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
 }
 
 .photo .first {

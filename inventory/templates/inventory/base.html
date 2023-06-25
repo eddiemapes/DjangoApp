@@ -9,15 +9,13 @@
 </head>
 {% endblock %}
 <body>
-    <nav class="header">
-        <span class="logo">DJANGO DELIGHTS</span>
-        <ul>
-            <li><a href="{% url 'home' %}">HOME PAGE</a></li>
-            <li><a href="{% url 'ingredients' %}">INGREDIENTS</a></li>
-            <li>MENU</li>
-            
-        </ul>
-
+    <nav>
+        <div class="logo"><a href="{% url 'home' %}">DJANGO DELIGHTS</a></div>
+        <div class="links">
+            <a href="{% url 'home' %}">HOME PAGE</a>
+            <a href="{% url 'ingredients' %}">INGREDIENTS</a>
+            <a href="{% url 'menu' %}">MENU</a>
+        </div>
 
 
     </nav>
