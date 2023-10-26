@@ -5,20 +5,21 @@
 <div class="ingredient-div">
     <table class="ingredient-table">
     <tr>
-        <th class="ingredient-th">Item</th>
-        <th class="ingredient-th">Price</th>
-        <th class="ingredient-th">Ingredients</th>
+        <th class="ingredient-th"><u>Item</u></th>
+        <th class="ingredient-th"><u>Price</u></th>
+        <th class="ingredient-th"><u>Ingredients</u></th>
     </tr>
     {% for menu_item in menu_items %}
     <tr>
         <td class="ingredient-td">{{ menu_item.name }}</td>
         <td class="ingredient-td">${{ menu_item.price }}</td>
         <td class="ingredient-td">
-            <ul>
-                {% for requirement in menu_item.recipe_requirements_set.all %}
-                <li>{{ requirement.ingredient.name }}</li>
+            
+                {% for requirement in menu_item.reciperequirement_set.all %}
+                <p>{{ requirement.ingredient.name }} - {{ requirement.quantity }}</p>
                 {% endfor %}
-            </ul>
+            
+            
         </td>
     </tr>
     {% endfor %}
@@ -30,3 +31,5 @@
 
 
 {% endblock %}
+
+
