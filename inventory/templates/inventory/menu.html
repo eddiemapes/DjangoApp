@@ -1,2 +1,32 @@
 {% extends './base.html' %}
 {% block title %}Our Menu{% endblock %}
+{% block content %}
+
+<div class="ingredient-div">
+    <table class="ingredient-table">
+    <tr>
+        <th class="ingredient-th">Item</th>
+        <th class="ingredient-th">Price</th>
+        <th class="ingredient-th">Ingredients</th>
+    </tr>
+    {% for menu_item in menu_items %}
+    <tr>
+        <td class="ingredient-td">{{ menu_item.name }}</td>
+        <td class="ingredient-td">${{ menu_item.price }}</td>
+        <td class="ingredient-td">
+            <ul>
+                {% for requirement in menu_item.recipe_requirements_set.all %}
+                <li>{{ requirement.ingredient.name }}</li>
+                {% endfor %}
+            </ul>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+
+<br>
+<a href="{% url 'create_menuitem' %}">Create a menu item</a>
+
+
+{% endblock %}

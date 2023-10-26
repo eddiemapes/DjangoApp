@@ -11,11 +11,12 @@
     {% for i in ingredients %}
     
         <tr>
-          <td class="ingredient-td">{{ i.ingredient_name }}</td>
-          <td class="ingredient-td">{{ i.ingredient_quantity }}</td>  
+          <td class="ingredient-td">{{ i.name }}</td>
+          <td class="ingredient-td">{{ i.quantity }} {{ i.unit }}</td>  
         </tr>
 {% endfor %}
 </table>
 </div>
-
+<br>
+<a href="{% url 'create_ingredient' %}">Create an ingredient</a>
 {% endblock %}

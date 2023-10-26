@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% extends './base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<body><h1>Testing part of app</h1></body>
+<br>
+<a href="{% url 'home' %}">Home</a>
+<table class="ingredient-table">
+    <tr>
+        <th class="ingredient-th">num1</th>
+        <th class="ingredient-th">string1</th>
+    </tr>
+
+    <form method="POST">
+        {% csrf_token %}
+        <tr>
+        {% for field in testform %}
+        
+        <td class="ingredient-td">{{ field }}</td>
+
+        {% endfor %}
+    </tr>
+        <button type="submit">Submit</button>
+    </form>
+</table>
+
+
+
+{% endblock %}

@@ -1,7 +1,8 @@
 
  * {
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
+    
  }
  
  /* Header */
@@ -16,6 +17,7 @@ nav {
     font-family: Verdana;
     font-size: 20;
     font-weight: bold;
+    width: 100%;
 }
 
 .logo {
@@ -51,6 +53,7 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     height: 923px;
     background: url("../css/img/modern.jpg") center center no-repeat;
     background-size: cover;
@@ -66,6 +69,8 @@ nav {
     font-weight: 400;
     font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 100px;
+    text-align: center;
+    width: 10%;
 }
 
 .banner h1 {
@@ -124,11 +129,13 @@ nav {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    
 }
 
 .ingredient-table {
     border: 2px solid green;
     background-color: #EFE5E2;
+    width: 50%;
     
 }
 

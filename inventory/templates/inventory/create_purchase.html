@@ -1,0 +1,24 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+<h1>Create a Purchase</h1>
+<br>
+
+<form method="POST" action="{% url 'create_purchase' %}">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+
+    <br>
+        <button type="submit" class="btn">Add to Purchase</button>
+            <a href="{% url 'menu' %}">Back to Menu</a>
+
+
+
+</form>
+
+
+
+{% endblock %}
