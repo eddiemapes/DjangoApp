@@ -34,6 +34,7 @@ class Purchase(models.Model):
     purchase_date = models.DateTimeField(auto_now_add=True, null=False, blank=False)
     quantity = models.IntegerField(blank=True, null=True)
     total = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, default=0)
+    cogs = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, default=0)
 
     def __str__(self):
         return self.menu_item.name

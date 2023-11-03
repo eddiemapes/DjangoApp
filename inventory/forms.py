@@ -16,3 +16,8 @@ class CreateMenuItemForm(ModelForm):
     class Meta:
         model = MenuItem
         fields = '__all__'
+
+class CreateRecipeRequirementForm(ModelForm):
+    class Meta:
+        model = RecipeRequirement
+        fields = '__all__'

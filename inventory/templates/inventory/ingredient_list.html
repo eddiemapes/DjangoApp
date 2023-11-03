@@ -8,11 +8,13 @@
 <table class="ingredient-table">
     <th class="ingredient-th">Ingredient</th>
     <th class="ingredient-th">Quantity</th>
+    <th class="ingredient-th">Unit Price</th>
     {% for i in ingredients %}
     
         <tr>
           <td class="ingredient-td">{{ i.name }}</td>
-          <td class="ingredient-td">{{ i.quantity }} {{ i.unit }}</td>  
+          <td class="ingredient-td">{{ i.quantity }} {{ i.unit }}</td>
+          <td class="ingredient-td">${{ i.unit_price }}</td>
         </tr>
 {% endfor %}
 </table>

@@ -5,9 +5,9 @@
 <div class="ingredient-div">
     <table class="ingredient-table">
     <tr>
-        <th class="ingredient-th"><u>Item</u></th>
-        <th class="ingredient-th"><u>Price</u></th>
-        <th class="ingredient-th"><u>Ingredients</u></th>
+        <th class="ingredient-th">Item</th>
+        <th class="ingredient-th">Price</th>
+        <th class="ingredient-th">Ingredients</th>
     </tr>
     {% for menu_item in menu_items %}
     <tr>
@@ -26,8 +26,11 @@
 </table>
 </div>
 
+
 <br>
 <a href="{% url 'create_menuitem' %}">Create a menu item</a>
+<br>
+<a href="{% url 'create_reciperequirement' %}">Add a requirement for a menu item</a>
 
 
 {% endblock %}

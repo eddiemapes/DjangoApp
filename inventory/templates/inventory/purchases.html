@@ -1,0 +1,12 @@
+{% extends './base.html' %}
+
+{% block content %}
+<h1>Purchases</h1>
+<hr>
+{% for p in purchases %}
+<p>{{p.menu_item}}</p>
+<p>{{p.quantity}}</p>
+<p>{{p.purchase_date}}</p>
+<p>{{p.total}}</p>
+{% endfor %}
+{% endblock %}
