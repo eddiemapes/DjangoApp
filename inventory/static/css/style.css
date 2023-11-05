@@ -6,7 +6,7 @@
  }
  
  /* Header */
-nav {
+/* nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -18,9 +18,9 @@ nav {
     font-size: 20;
     font-weight: bold;
     width: 100%;
-}
+} */
 
-.logo {
+/* .logo {
     color: #30d5c8;
     margin-right: 44rem;
     border: 1px solid #30d5c8;
@@ -30,22 +30,22 @@ nav {
 
 .logo a:active {
     color: #30d5c8;
-}
+} */
 
-.links {
+/* .links {
     display: flex;
     /* padding-right: 2.22rem;
     padding-left: 2.22rem; */
-}
 
-.links a {
+
+/* .links a {
     margin-left: 10px;
     text-decoration: none;
     color: white;
     border: 1px solid white;
     border-radius: 5px;
     padding: 5px;
-}
+} */
 
 /* Banner */
 .banner {

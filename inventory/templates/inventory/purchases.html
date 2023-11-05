@@ -1,12 +1,26 @@
 {% extends './base.html' %}
 
 {% block content %}
-<h1>Purchases</h1>
+<h1 style="text-align: center;">Purchases</h1>
 <hr>
+<table class="ingredient-table">
+<th class="ingredient-th">Menu Item</th>
+<th class="ingredient-th">Quantity</th>
+<th class="ingredient-th">Date</th>
+<th class="ingredient-th">Total</th>
 {% for p in purchases %}
-<p>{{p.menu_item}}</p>
-<p>{{p.quantity}}</p>
-<p>{{p.purchase_date}}</p>
-<p>{{p.total}}</p>
+<tr>
+    <td class="ingredient-td">{{p.menu_item}}</td>
+    <td class="ingredient-td">{{p.quantity}}</td>
+    <td class="ingredient-td">{{p.purchase_date}}</td>
+    <td class="ingredient-td">${{p.total}}</td>
+</tr>
+
 {% endfor %}
+
+</table>
+<hr>
+<a href="#">Calculate profit/loss</a>
+
 {% endblock %}
+

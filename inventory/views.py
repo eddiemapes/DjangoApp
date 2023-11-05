@@ -66,6 +66,9 @@ def calculate_cogs(menu_item, quantity):
     for requirement in menu_item.reciperequirements_set.all():
         ingredient = requirement.ingredient
 
+def incomereport(request):
+    pass
+
 class IngredientCreateView(CreateView):
     model = Ingredient
     form_class = CreateIngredientForm

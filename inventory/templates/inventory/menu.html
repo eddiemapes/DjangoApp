@@ -1,7 +1,8 @@
 {% extends './base.html' %}
 {% block title %}Our Menu{% endblock %}
 {% block content %}
-
+<h1 style="text-align: center;">Menu</h1>
+<hr>
 <div class="ingredient-div">
     <table class="ingredient-table">
     <tr>
@@ -31,6 +32,8 @@
 <a href="{% url 'create_menuitem' %}">Create a menu item</a>
 <br>
 <a href="{% url 'create_reciperequirement' %}">Add a requirement for a menu item</a>
+<br>
+<a href="{% url 'create_purchase' %}">Add items to purchase</a>
 
 
 {% endblock %}
