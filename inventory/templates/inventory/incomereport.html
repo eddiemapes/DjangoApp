@@ -1,7 +1,25 @@
 {% extends './base.html' %}
 
 {% block content %}
+<table>
+    <tr>
+    <th>Menu Items</th>
+    <th>Quantity</th>
+    <th>Revenue</th>
+    <th>Expenses</th>
+    </tr>
+    {% for purchase in purchases %}
+    <tr>
+        <td>{{purchase.menu_item}}</td>
+        <td>{{purchase.quantity}}</td>
+        <td>{{purchase.total}}</td>
+        <td>{{purchase.cogs}}</td>
 
+    </tr>
+    {% endfor %}
+
+
+</table>
 
 
 {% endblock %}

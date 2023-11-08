@@ -32,11 +32,6 @@ def menu(request):
 
 def purchases(request):
     purchases = Purchase.objects.all()
-    total_rev = 0
-    total_cogs = 0
-    for p in purchases:
-        total_rev += p.menu_item.price * p.quantity
-        # total_cogs += 
     context = {'purchases':purchases}
 
     return render(request, 'inventory/purchases.html', context)
@@ -56,18 +51,37 @@ def create_purchase(request):
             menu_item = MenuItem.objects.get(pk=menu_item_id)
             
             cogs = calculate_cogs(menu_item, quantity)
-            
+            create_purchase.cogs = cogs
+            create_purchase.save()
+
+            quantitypurchased = create_purchase.quantity
+            # Change the ingredient inventory
+            for requirement in menu_item.ingredients.through.objects.filter(item=menu_item):
+                ingredient = requirement.ingredient
+                quantityofingredientrequired = requirement.quantity
+                ingredient.quantity -= quantityofingredientrequired * quantitypurchased
+                ingredient.save()
+
             messages.success(request, "Purchase added...")
-            return redirect('menu')
-    return render(request, 'inventory/create_purchase.html', {'form': form})
+            return redirect('purchases')
+    context = {'form': form,}
+    return render(request, 'inventory/create_purchase.html', context)
 
 def calculate_cogs(menu_item, quantity):
-    cogs = 0
-    for requirement in menu_item.reciperequirements_set.all():
+    cogsperingredient = 0
+    for requirement in menu_item.ingredients.through.objects.filter(item=menu_item):
         ingredient = requirement.ingredient
+        quantityofingredientrequired = requirement.quantity
+        unitpriceofingredient = ingredient.unit_price
+        cogsperingredient += quantityofingredientrequired * unitpriceofingredient
+    cogs = cogsperingredient * quantity
+    return cogs
 
 def incomereport(request):
-    pass
+    purchases = Purchase.objects.all()
+    context = {'purchases': purchases}
+
+    return render(request, 'inventory/incomereport.html', context)
 
 class IngredientCreateView(CreateView):
     model = Ingredient
