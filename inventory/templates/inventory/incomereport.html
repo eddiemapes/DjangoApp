@@ -7,17 +7,24 @@
     <th>Quantity</th>
     <th>Revenue</th>
     <th>Expenses</th>
+    <th></th>
     </tr>
     {% for purchase in purchases %}
     <tr>
         <td>{{purchase.menu_item}}</td>
         <td>{{purchase.quantity}}</td>
-        <td>{{purchase.total}}</td>
-        <td>{{purchase.cogs}}</td>
-
+        <td>${{purchase.total}}</td>
+        <td>${{purchase.cogs}}</td>
+        <td></td>
     </tr>
     {% endfor %}
-
+    <tr>
+        <td></td>
+        <td>Total:</td>
+        <td>${{ revtotal }}</td>
+        <td>${{ expensetotal }}</td>
+        <td>${{ overalltotal }}</td>
+    </tr>
 
 </table>
 

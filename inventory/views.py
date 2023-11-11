@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView
+from django.forms import modelformset_factory
 
 from .models import *
 from .forms import AddPurchaseForm, CreateIngredientForm, CreateMenuItemForm, CreateRecipeRequirementForm
@@ -18,10 +19,17 @@ def ingredients(request):
     ingred_list = Ingredient.objects.all().order_by('name')
     return render(request, "inventory/ingredient_list.html", {'ingredients': ingred_list})
 
+def modify_ingredients(request):
+
+    context = {}
+    return render(request, 'inventory/modify_ingredients.html', context)
+
 def menu(request):
     menu_items = MenuItem.objects.all()
     recipe_requirements = RecipeRequirement.objects.all()
     ingredients = Ingredient.objects.all()
+
+
     context = {
         'menu_items': menu_items,
         'recipe_requirements': recipe_requirements,
@@ -79,7 +87,18 @@ def calculate_cogs(menu_item, quantity):
 
 def incomereport(request):
     purchases = Purchase.objects.all()
-    context = {'purchases': purchases}
+    revtotal = 0
+    expensetotal = 0
+    for purchase in purchases:
+        revtotal += purchase.total
+        expensetotal += purchase.cogs
+    overalltotal = revtotal - expensetotal
+
+    context = {'purchases': purchases,
+               'revtotal': revtotal,
+               'expensetotal': expensetotal,
+               'overalltotal': overalltotal
+               }
 
     return render(request, 'inventory/incomereport.html', context)
 

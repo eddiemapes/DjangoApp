@@ -3,6 +3,9 @@
 {% block content %}
 <h1 style="text-align: center;">Menu</h1>
 <hr>
+
+<form method="POST">
+    {% csrf_token %}
 <div class="ingredient-div">
     <table class="ingredient-table">
     <tr>
@@ -15,17 +18,19 @@
         <td class="ingredient-td">{{ menu_item.name }}</td>
         <td class="ingredient-td">${{ menu_item.price }}</td>
         <td class="ingredient-td">
-            
                 {% for requirement in menu_item.reciperequirement_set.all %}
                 <p>{{ requirement.ingredient.name }} - {{ requirement.quantity }}</p>
                 {% endfor %}
-            
-            
         </td>
+        
     </tr>
+    
     {% endfor %}
+    
 </table>
 </div>
+
+</form>
 
 
 <br>
