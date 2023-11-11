@@ -9,12 +9,14 @@
     <th class="ingredient-th">Ingredient</th>
     <th class="ingredient-th">Quantity</th>
     <th class="ingredient-th">Unit Price</th>
+    <th class="ingredient-th">Modify</th>
     {% for i in ingredients %}
     
         <tr>
           <td class="ingredient-td">{{ i.name }}</td>
           <td class="ingredient-td">{{ i.quantity }} {{ i.unit }}</td>
           <td class="ingredient-td">${{ i.unit_price }}</td>
+          <td class="ingredient-td"><a href="{% url 'modify_ingredient' i.id %}">Update</a></td>
         </tr>
 {% endfor %}
 </table>

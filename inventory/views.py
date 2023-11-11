@@ -19,10 +19,37 @@ def ingredients(request):
     ingred_list = Ingredient.objects.all().order_by('name')
     return render(request, "inventory/ingredient_list.html", {'ingredients': ingred_list})
 
-def modify_ingredients(request):
 
-    context = {}
-    return render(request, 'inventory/modify_ingredients.html', context)
+
+
+
+
+def modify_ingredient(request, id):
+    ingredient = Ingredient.objects.get(pk=id)
+    
+    if request.method == 'POST':
+        form = CreateIngredientForm(request.POST, instance=ingredient)
+        if form.is_valid():
+            form.save()
+        return redirect('ingredients')
+    else:
+        form = CreateIngredientForm(instance=ingredient)
+        context = {'form': form,
+                   'ingredient': ingredient}
+        return render(request, 'inventory/modify_ingredient.html', context)
+
+def delete_ingredient(request, id):
+    
+    ingredient = Ingredient.objects.get(pk=id)
+    ingredient.delete()
+    return redirect('ingredients')
+    
+    
+    
+
+
+
+
 
 def menu(request):
     menu_items = MenuItem.objects.all()
