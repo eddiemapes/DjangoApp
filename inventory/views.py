@@ -1,15 +1,46 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView
 from django.forms import modelformset_factory
+from django.contrib.auth.forms import UserCreationForm
 
 from .models import *
 from .forms import AddPurchaseForm, CreateIngredientForm, CreateMenuItemForm, CreateRecipeRequirementForm
 
 
 # Create your views here.
+
+class SignupView(CreateView):
+    template_name = 'inventory/signup.html'
+    form_class = UserCreationForm
+
+    def get_success_url(self):
+        return reverse('login_page')
+    
+
+
+
+
+def login_page(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+        return redirect('menu')
+
+    return render(request, 'inventory/login_page.html', {})
+
+
+
+
+
+
 
 def home(request):
     # return HttpResponse("Hello world")
@@ -44,12 +75,6 @@ def delete_ingredient(request, id):
     ingredient.delete()
     return redirect('ingredients')
     
-    
-    
-
-
-
-
 
 def menu(request):
     menu_items = MenuItem.objects.all()
