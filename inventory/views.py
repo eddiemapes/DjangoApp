@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView
 from django.forms import modelformset_factory
@@ -32,12 +33,15 @@ def login_page(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-        return redirect('menu')
+        return redirect('home')
 
     return render(request, 'inventory/login_page.html', {})
 
 
-
+def logout_user(request):
+    
+    logout(request)
+    return redirect('home')
 
 
 
@@ -46,6 +50,7 @@ def home(request):
     # return HttpResponse("Hello world")
     return render(request, "inventory/home.html")
 
+@login_required(login_url='/accounts/login/')
 def ingredients(request):
     ingred_list = Ingredient.objects.all().order_by('name')
     return render(request, "inventory/ingredient_list.html", {'ingredients': ingred_list})
@@ -54,7 +59,7 @@ def ingredients(request):
 
 
 
-
+@login_required(login_url='/accounts/login/')
 def modify_ingredient(request, id):
     ingredient = Ingredient.objects.get(pk=id)
     
@@ -69,13 +74,14 @@ def modify_ingredient(request, id):
                    'ingredient': ingredient}
         return render(request, 'inventory/modify_ingredient.html', context)
 
+@login_required(login_url='/accounts/login/')
 def delete_ingredient(request, id):
     
     ingredient = Ingredient.objects.get(pk=id)
     ingredient.delete()
     return redirect('ingredients')
     
-
+@login_required(login_url='/accounts/login/')
 def menu(request):
     menu_items = MenuItem.objects.all()
     recipe_requirements = RecipeRequirement.objects.all()
@@ -89,7 +95,7 @@ def menu(request):
     }
     return render(request, "inventory/menu.html", context)
 
-
+@login_required(login_url='/accounts/login/')
 def purchases(request):
     purchases = Purchase.objects.all()
     context = {'purchases':purchases}
@@ -97,7 +103,7 @@ def purchases(request):
     return render(request, 'inventory/purchases.html', context)
 
 
-
+@login_required(login_url='/accounts/login/')
 def create_purchase(request):
     form = AddPurchaseForm(request.POST)
     if request.method == 'POST':
@@ -137,6 +143,7 @@ def calculate_cogs(menu_item, quantity):
     cogs = cogsperingredient * quantity
     return cogs
 
+@login_required(login_url='/accounts/login/')
 def incomereport(request):
     purchases = Purchase.objects.all()
     revtotal = 0
@@ -154,19 +161,22 @@ def incomereport(request):
 
     return render(request, 'inventory/incomereport.html', context)
 
-class IngredientCreateView(CreateView):
+
+class IngredientCreateView(LoginRequiredMixin, CreateView):
     model = Ingredient
     form_class = CreateIngredientForm
     template_name = 'inventory/create_ingredient.html'
     success_url = 'ingredients'
 
-class MenuItemCreateView(CreateView):
+
+class MenuItemCreateView(LoginRequiredMixin, CreateView):
     model = MenuItem
     form_class = CreateMenuItemForm
     template_name = 'inventory/create_menuitem.html'
     success_url = 'menu'
 
-class RecipeRequirementCreateView(CreateView):
+
+class RecipeRequirementCreateView(LoginRequiredMixin, CreateView):
     model = RecipeRequirement
     form_class = CreateRecipeRequirementForm
     template_name = 'inventory/create_reciperequirement.html'

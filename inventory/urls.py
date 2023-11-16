@@ -16,5 +16,5 @@ urlpatterns = [
     path('delete_ingredient/<int:id>/', views.delete_ingredient, name='delete_ingredient'),
     path('signup', views.SignupView.as_view(), name='signup'),
     path('login_page', views.login_page, name='login_page'),
-    # path('logout', views.logout, name='logout'),
+    path('logout', views.logout_user, name='logout'),
 ]

@@ -27,11 +27,18 @@
                     <li class="nav-link">
                         <a href="{% url 'purchases' %}">Purchases</a>
                     </li>
-                    
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-link">
+                        <a href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    {% else %}
                     <li class="nav-link">
                         <a href="{% url 'login_page' %}">Login</a>
                     </li>
-                   
+                    {% endif %}
+                    <li class="nav-link">
+                        <a href="{% url 'signup' %}">Register</a>
+                    </li>
                 </ul>
             
         </nav>
