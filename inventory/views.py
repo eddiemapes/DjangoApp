@@ -50,7 +50,7 @@ def home(request):
     # return HttpResponse("Hello world")
     return render(request, "inventory/home.html")
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/login_page')
 def ingredients(request):
     ingred_list = Ingredient.objects.all().order_by('name')
     return render(request, "inventory/ingredient_list.html", {'ingredients': ingred_list})
@@ -59,7 +59,7 @@ def ingredients(request):
 
 
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/login_page')
 def modify_ingredient(request, id):
     ingredient = Ingredient.objects.get(pk=id)
     
@@ -74,14 +74,14 @@ def modify_ingredient(request, id):
                    'ingredient': ingredient}
         return render(request, 'inventory/modify_ingredient.html', context)
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/login_page')
 def delete_ingredient(request, id):
     
     ingredient = Ingredient.objects.get(pk=id)
     ingredient.delete()
     return redirect('ingredients')
     
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/login_page')
 def menu(request):
     menu_items = MenuItem.objects.all()
     recipe_requirements = RecipeRequirement.objects.all()
@@ -95,7 +95,7 @@ def menu(request):
     }
     return render(request, "inventory/menu.html", context)
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/login_page')
 def purchases(request):
     purchases = Purchase.objects.all()
     context = {'purchases':purchases}
@@ -103,7 +103,7 @@ def purchases(request):
     return render(request, 'inventory/purchases.html', context)
 
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/login_page')
 def create_purchase(request):
     form = AddPurchaseForm(request.POST)
     if request.method == 'POST':
@@ -143,7 +143,7 @@ def calculate_cogs(menu_item, quantity):
     cogs = cogsperingredient * quantity
     return cogs
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/login_page')
 def incomereport(request):
     purchases = Purchase.objects.all()
     revtotal = 0
